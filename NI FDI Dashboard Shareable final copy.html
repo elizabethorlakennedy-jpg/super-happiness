@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NI FDI Landscape 2016–2025</title>
+<style>
+  /* Self-contained font stack — no external dependencies */
+</style>
+
+<!--
+  ════════════════════════════════════════════════════════════════════
+  HOW TO EDIT THIS FILE
+  ════════════════════════════════════════════════════════════════════
+  1. Open this file in Notepad (Windows) or TextEdit (Mac, use Format >
+     Make Plain Text first) or any text editor.
+  2. Press Ctrl+F (or Cmd+F on Mac) to search for the text you want
+     to change — every editable value has a comment above it like:
+         EDIT: change this value
+  3. Change the value between the quotes or tags.
+  4. Save the file, then open it in your browser to see the result.
+
+  SECTIONS YOU CAN EDIT:
+  ─ MASTHEAD TEXT .............. search "EDIT MASTHEAD"
+  ─ KEY STATISTICS STRIP ....... search "EDIT STATS"
+  ─ FIGURE 1 (project volumes) . search "EDIT FIG1"
+  ─ FIGURE 2 (capital $m) ...... search "EDIT FIG2"
+  ─ FIGURE 3 (jobs) ............ search "EDIT FIG3"
+  ─ FIGURE 4 (sectors) ......... search "EDIT FIG4"
+  ─ FIGURE 5 (activities) ...... search "EDIT FIG5"
+  ─ FIGURE 6 (project types) ... search "EDIT FIG6NI 
+  ─ INSIGHT TEXT BOXES ......... search "EDIT INSIGHT"
+  ─ COMPARISON TABLE ........... search "EDIT TABLE"
+  ─ STRATEGY CARDS ............. search "EDIT STRATEGY"
+  ─ FOOTER ..................... search "EDIT FOOTER"
+  ════════════════════════════════════════════════════════════════════
+-->
+
+<style>
+  :root {
+    --ink:    #0f1923;
+    --paper:  #f5f0e8;
+    --accent: #c0392b;
+    --mid:    #2c3e50;
+    --pale:   #e8e2d6;
+    --gold:   #d4a017;
+    --teal:   #1a6b72;
+    --rule:   #ccc5b5;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif; background: var(--paper); color: var(--ink); min-height: 100vh; }
+  .masthead { border-bottom: 3px double var(--ink); padding: 32px 48px 24px; display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 24px; }
+  .masthead-label { font-size:10px; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:var(--accent); margin-bottom:8px; }
+  .masthead h1 { font-family:Georgia,'Times New Roman',serif; font-size:clamp(28px,4vw,48px); line-height:1.05; color:var(--ink); }
+  .masthead h1 em { font-style:italic; color:var(--accent); }
+  .masthead-meta { text-align:right; font-size:11px; color:#666; line-height:1.7; font-weight:300; }
+  .masthead-meta strong { display:block; font-size:13px; color:var(--ink); font-weight:600; }
+  .stats-strip { display:grid; grid-template-columns:repeat(6,1fr); border-bottom:1px solid var(--rule); }
+  .stat-cell { padding:20px 24px; border-right:1px solid var(--rule); }
+  .stat-cell:last-child { border-right:none; }
+  .stat-num { font-family:Georgia,'Times New Roman',serif; font-size:28px; color:var(--ink); line-height:1; margin-bottom:2px; }
+  .stat-num.accent { color:var(--accent); }
+  .stat-num.teal { color:var(--teal); }
+  .stat-sub { font-size:9px; color:#aaa; font-weight:600; text-transform:uppercase; letter-spacing:.08em; }
+  .stat-label { font-size:10px; text-transform:uppercase; letter-spacing:0.12em; color:#888; font-weight:500; }
+  .legend-row { display:flex; gap:24px; padding:10px 48px; border-bottom:1px solid var(--rule); background:var(--pale); align-items:center; }
+  .legend-item { display:flex; align-items:center; gap:7px; font-size:11px; font-weight:500; }
+  .legend-swatch { width:16px; height:10px; border-radius:1px; }
+  .grid { display:grid; grid-template-columns:1fr 1fr; gap:0; }
+  .panel { padding:32px 40px; border-right:1px solid var(--rule); border-bottom:1px solid var(--rule); }
+  .panel:nth-child(even) { border-right:none; }
+  .panel.full { grid-column:1/-1; border-right:none; }
+  .panel-label { font-size:9px; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:var(--accent); margin-bottom:6px; }
+  .panel h2 { font-family:Georgia,'Times New Roman',serif; font-size:20px; margin-bottom:4px; }
+  .panel .subtitle { font-size:12px; color:#777; margin-bottom:20px; font-weight:300; }
+  .chart-svg { width:100%; overflow:visible; display:block; }
+  .bar-fill { height:100%; background:var(--ink); transition:width 1.2s cubic-bezier(.16,1,.3,1); }
+  .bar-fill.teal { background:var(--teal); }
+  .insight { border-left:3px solid var(--accent); padding:12px 16px; background:rgba(192,57,43,0.05); margin-top:20px; }
+  .insight p { font-size:12px; line-height:1.6; color:var(--mid); }
+  .insight strong { color:var(--accent); }
+  .compare-note { border-left:3px solid var(--teal); padding:10px 14px; background:rgba(26,107,114,0.05); margin-top:12px; font-size:11px; color:var(--mid); line-height:1.6; }
+  .compare-note strong { color:var(--teal); }
+  .data-table { width:100%; border-collapse:collapse; font-size:12px; }
+  .data-table th { font-size:9px; text-transform:uppercase; letter-spacing:0.12em; font-weight:600; color:var(--accent); padding:0 8px 8px; text-align:left; border-bottom:1px solid var(--ink); }
+  .data-table td { padding:9px 8px; border-bottom:1px solid var(--rule); vertical-align:top; }
+  .data-table tr:last-child td { border-bottom:none; }
+  .data-table .num { font-weight:600; color:var(--ink); font-family:Georgia,'Times New Roman',serif; font-size:14px; }
+  .data-table .tnum { font-weight:600; color:var(--teal); font-family:Georgia,'Times New Roman',serif; font-size:14px; }
+  .badge { display:inline-block; font-size:9px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; padding:2px 7px; border-radius:2px; background:var(--pale); color:#555; }
+  .badge.pos { background:#d4edda; color:#155724; }
+  .badge.neg { background:#f8d7da; color:#721c24; }
+  .strategy-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:4px; }
+  .strategy-card { border:1px solid var(--rule); padding:20px; position:relative; }
+  .strategy-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:var(--accent); }
+  .strategy-num { font-family:Georgia,'Times New Roman',serif; font-size:40px; color:var(--pale); line-height:1; margin-bottom:8px; }
+  .strategy-title { font-size:13px; font-weight:600; color:var(--ink); margin-bottom:6px; }
+  .strategy-body { font-size:11px; color:#666; line-height:1.65; }
+  .footer { border-top:3px double var(--ink); padding:16px 48px; display:flex; justify-content:space-between; align-items:center; font-size:10px; color:#888; }
+  @media(max-width:860px){
+    .stats-strip { grid-template-columns:repeat(3,1fr); }
+    .grid { grid-template-columns:1fr; }
+    .panel, .panel:nth-child(even) { border-right:none; }
+    .strategy-grid { grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════
+     EDIT MASTHEAD — change report title, source, dates
+     ════════════════════════════════════════════ -->
+<div class="masthead">
+  <div>
+    <!-- EDIT: small label above the title -->
+    <div class="masthead-label">fDi Markets Database · Perspective Economics</div>
+    <!-- EDIT: main title — keep <em> tags around the italic word -->
+    <h1>Northern Ireland <em>FDI Landscape</em><br>2016 — 2025</h1>
+  </div>
+  <div class="masthead-meta">
+    <!-- EDIT: top-right metadata block -->
+    <strong>Source: fDi Markets Database (FT Group)</strong>
+    Period: Jan 2016 – Dec 2025<br>
+    NI: 353 projects · ROI: 2,341 projects<br>
+    Republic of Ireland used as benchmark
+  </div>
+</div>
+
+<div class="legend-row">
+  <div class="legend-item"><span class="legend-swatch" style="background:var(--ink)"></span> Northern Ireland (NI)</div>
+  <div class="legend-item"><span class="legend-swatch" style="background:var(--teal)"></span> Republic of Ireland (ROI)</div>
+  <span style="font-size:10px;color:#aaa;margin-left:auto;">ROI on secondary scale where noted</span>
+</div>
+
+<!-- ════════════════════════════════════════════
+     EDIT STATS — the 6 headline numbers at the top
+     ════════════════════════════════════════════ -->
+<div class="stats-strip">
+  <div class="stat-cell">
+    <div class="stat-num accent">353</div>
+    <div class="stat-sub">NI Projects</div>
+    <div class="stat-num teal" style="font-size:20px;margin-top:4px;">2,341</div>
+    <div class="stat-sub">ROI Projects</div>
+  </div>
+  <div class="stat-cell">
+    <div class="stat-num accent">21,730</div>
+    <div class="stat-sub">NI Jobs</div>
+    <div class="stat-num teal" style="font-size:20px;margin-top:4px;">175,461</div>
+    <div class="stat-sub">ROI Jobs</div>
+  </div>
+  <div class="stat-cell">
+    <div class="stat-num accent">$10.1bn</div>
+    <div class="stat-sub">NI Capital</div>
+    <div class="stat-num teal" style="font-size:20px;margin-top:4px;">$97.9bn</div>
+    <div class="stat-sub">ROI Capital</div>
+  </div>
+  <div class="stat-cell">
+    <div class="stat-num">62</div>
+    <div class="stat-label">Avg. Jobs / Project (NI)</div>
+  </div>
+  <div class="stat-cell">
+    <div class="stat-num accent">42.8%</div>
+    <div class="stat-label">NI Expansion Share</div>
+  </div>
+  <div class="stat-cell">
+    <div class="stat-num accent">26.1%</div>
+    <div class="stat-label">NI R&amp;D Activity Share</div>
+  </div>
+</div>
+
+<div class="grid">
+
+  <!-- FIG 1 full width -->
+  <div class="panel full">
+    <!-- EDIT: panel label and title -->
+    <div class="panel-label">Figure 1 — Annual Project Volume</div>
+    <h2>FDI Projects per Year: NI vs ROI</h2>
+    <p class="subtitle">NI left axis · ROI right axis (÷6 for visual scale) · 2016–2025 · Source: fDi Markets (full datasets)</p>
+    <svg class="chart-svg" id="fig1" viewBox="0 0 900 210"></svg>
+    <!-- EDIT INSIGHT FIG1: change the text inside <p> below -->
+    <div class="insight">
+      <p>NI averaged <strong>~35 projects per year</strong>, ranging from 26 (2023) to 47 (2016). ROI averaged <strong>~234 per year</strong>, peaking at 290 in 2022 before contracting. The relative consistency of project volumes in NI contrasts the cyclical peaks evident in ROI, reflective of NI's smaller total adressable market, less exposed to macreconomic headwinds.</p>
+    </div>
+  </div>
+
+  <!-- FIG 2 -->
+  <div class="panel">
+    <div class="panel-label">Figure 2 — Capital Investment</div>
+    <h2>NI Capital Investment by Year (USD $m)</h2>
+    <p class="subtitle">NI annual capital investment 2016–2025 · total: $10.1bn · avg $28.7m per project · Source: fDi Markets</p>
+    <svg class="chart-svg" id="fig2" viewBox="0 0 420 200"></svg>
+    <!-- EDIT INSIGHT FIG2 -->
+    <div class="insight">
+      <p>NI total: <strong>$10.1bn</strong> vs ROI's $97.9bn — a 9.7× gap. The per-project gap is narrower at <strong>$28.7m vs $41.8m.</strong>. Sharp single-year spikes reflect the outsized impact of large individual projects, a characteristic of smaller markets.</p>
+    </div>
+  </div>
+
+  <!-- FIG 3 -->
+  <div class="panel">
+    <div class="panel-label">Figure 3 — Employment Creation</div>
+    <h2>FDI Jobs Created per Year (NI)</h2>
+    <p class="subtitle">NI annual job creation 2016–2025 · total: 21,730 · ROI total: 175,461 · ROI peak: 26,020 in 2022</p>
+    <svg class="chart-svg" id="fig3" viewBox="0 0 420 200"></svg>
+    <!-- EDIT INSIGHT FIG3 -->
+    <div class="compare-note">
+      <strong>2025 peak:</strong> NI's 3,875 jobs is the highest of the decade, suggesting more recent project yield stronger employment outcomes.
+    </div>
+  </div>
+
+  <!-- FIG 4 -->
+  <div class="panel">
+    <div class="panel-label">Figure 4 — Sector Breakdown</div>
+    <h2>FDI Projects by Sector</h2>
+    <p class="subtitle">Share of total projects · NI (dark) vs ROI (teal) · 2016–2025</p>
+    <div id="fig4"></div>
+    <!-- EDIT INSIGHT FIG4 -->
+    <div class="insight">
+      <p>NI's <strong>Software & IT concentration of 43.3%</strong> is 16pp above ROI's 27.3%, reflecting Technology clustering that has develeoped in Belfast, whereas ROI's mix reflects a more diversified market.</p>
+    </div>
+  </div>
+
+  <!-- FIG 5 -->
+  <div class="panel">
+    <div class="panel-label">Figure 5 — Activity Profile</div>
+    <h2>FDI by Activity Type</h2>
+    <p class="subtitle">Share of total projects · NI (dark) vs ROI (teal) · 2016–2025</p>
+    <div id="fig5"></div>
+    <!-- EDIT INSIGHT FIG5 -->
+    <div class="insight">
+       <p>NI's <strong>R&amp;D share of 26.1%</strong> is a significant differentiator of NI's FDI portfolio, likely underpinned by NI's university research base. The HQ gap (4.2% vs 14.0%) reflects Dublin's structural EU market access advantage.</p>
+    </div>
+  </div>
+
+  <!-- FIG 6 -->
+  <div class="panel">
+    <div class="panel-label">Figure 6 — Project Type</div>
+    <h2>New vs Expansion vs Co-Location</h2>
+    <p class="subtitle">Absolute project counts and % share · NI vs ROI · 2016–2025 · Source: fDi Markets (full datasets)</p>
+    <!-- Two side-by-side pie charts: NI left, ROI right -->
+    <svg class="chart-svg" id="fig6" viewBox="0 0 420 230"></svg>
+    <!-- EDIT INSIGHT FIG6 -->
+    <div class="insight">
+      <p>NI's expansion share (42.8%) is proportionally higher than ROI's (35.8%), suggesting strong investor retention in NI's concentrated tech base. However in <strong>absolute terms ROI recorded 837 expansion projects against NI's 151 — 5.5× more</strong>. The higher NI share reflects a concentrated base of repeat investors, not superior expansion performance in aggregate and may also indicate a relative underperformance in NI in attracting first-time investors at scale.</p>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════
+       EDIT TABLE — change each cell value below
+       Format: <td class="num">VALUE</td>  for NI
+                <td class="tnum">VALUE</td> for ROI
+       Change badge text and class:
+         class="badge"     = neutral (grey)
+         class="badge pos" = green (NI leads / good)
+         class="badge neg" = red (gap / concern)
+       ════════════════════════════════════════════ -->
+  <div class="panel">
+    <div class="panel-label">Summary — At a Glance</div>
+    <h2>NI vs ROI: Full Comparison</h2>
+    <p class="subtitle">Key metrics across the 2016–2025 investment period</p>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Metric</th>
+          <th style="color:var(--accent)">NI</th>
+          <th style="color:var(--teal)">ROI</th>
+          <th>Signal</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- REAL DATA from fDi Markets xlsx — NI 2016-2025 (353 projects) vs ROI 2016-2025 (2,341 projects) -->
+        <tr><td>Total Projects</td>       <td class="num">353</td>      <td class="tnum">2,341</td>    <td><span class="badge neg">ROI leads 6.6×</span></td></tr>
+        <tr><td>Jobs Created</td>         <td class="num">21,730</td>   <td class="tnum">175,461</td>  <td><span class="badge neg">ROI leads 8.1×</span></td></tr>
+        <tr><td>Capital Investment</td>   <td class="num">$10.1bn</td>  <td class="tnum">$97.9bn</td>  <td><span class="badge neg">ROI leads 9.7×</span></td></tr>
+        <tr><td>Jobs per Project</td>     <td class="num">62</td>       <td class="tnum">75</td>       <td><span class="badge neg">ROI leads</span></td></tr>
+        <tr><td>Capital per Project</td>  <td class="num">$28.7m</td>   <td class="tnum">$41.8m</td>   <td><span class="badge neg">ROI leads</span></td></tr>
+        <tr><td>Expansion Share</td>      <td class="num">42.8%</td>    <td class="tnum">35.8%</td>    <td><span class="badge pos">NI leads % · 151 vs 837 absolute</span></td></tr>
+        <tr><td>R&amp;D Activity</td>     <td class="num">26.1%</td>    <td class="tnum">13.0%</td>    <td><span class="badge pos">NI leads 2×</span></td></tr>
+        <tr><td>Software &amp; IT</td>    <td class="num">43.3%</td>    <td class="tnum">27.3%</td>    <td><span class="badge pos">NI leads</span></td></tr>
+        <tr><td>HQ Activity</td>          <td class="num">4.2%</td>     <td class="tnum">13.2%</td>    <td><span class="badge neg">ROI leads 3×</span></td></tr>
+        <tr><td>Financial Services</td>   <td class="num">4.0%</td>     <td class="tnum">8.6%</td>     <td><span class="badge neg">ROI leads</span></td></tr>
+        <tr><td>Top Source Country</td>   <td colspan="2" style="font-size:11px;color:#555;">United States · NI 45.6% · ROI 43.8%</td><td><span class="badge">Aligned</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ════════════════════════════════════════════
+       EDIT STRATEGY — change title and body text
+       of each of the 4 strategy cards below
+       ════════════════════════════════════════════ -->
+  <div class="panel full">
+    <div class="panel-label">Section 7 — Strategic Conclusions</div>
+    <h2>Four Strategic Priorities for NI's FDI Pipeline</h2>
+    <p class="subtitle">Derived from sectoral, activity-type and benchmark analysis · Forward-looking to 2030</p>
+    <div class="strategy-grid">
+
+      <div class="strategy-card">
+        <div class="strategy-num">01</div>
+        <div class="strategy-title">Deepen and Extend the Technology Cluster</div>  <!-- EDIT: card title -->
+        <div class="strategy-body">NI's concentration on Software & IT Services (43.3% of all FDI projects) is the defining characteristic of its investment profile. This level of specialisation, nearly 1.5x ROI's own concentration in the same sector, relfects compounding cluster effects. NI should pursue deepening or related diversification. </div>  <!-- EDIT: card body -->
+      </div>
+
+      <div class="strategy-card">
+        <div class="strategy-num">02</div>
+        <div class="strategy-title">Capitalise on the R&D Advantage</div>
+        <div class="strategy-body">NI's R&D activity share (26.1%) is nearly double ROI's (13.8%) — the most differentiated feature of NI's FDI portfolio. Active promotion to innovation-led investors, in partnership with QUB, Ulster University, and Catapult centres, should be a central strategic priority.</div>
+      </div>
+
+      <div class="strategy-card">
+        <div class="strategy-num">03</div>
+        <div class="strategy-title">Protect & Grow the Expansion Base</div>
+        <div class="strategy-body">The 42.8% expansion rate is NI's most strategically significant FDI metric. Sustained investment in aftercare programmes, talent pipeline development, and investor relations is critical — particularly as global headcount pressures intensify among US tech multinationals.</div>
+      </div>
+
+      <div class="strategy-card">
+        <div class="strategy-num">04</div>
+        <div class="strategy-title">Address the Headquarters Gap</div>
+        <div class="strategy-body">NI attracts only 4.2% of projects as HQ activity vs ROI's 14.0%. While Dublin's EU advantages are a structural post-Brexit constraint, NI could target regional or divisional headquarters — particularly from US investors already operating in the jurisdiction.</div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<!-- EDIT FOOTER: change the two text strings below -->
+<div class="footer">
+  <span>Data: fDi Markets Database (FT Group) · Period: Jan 2016–Dec 2025 · NI: 353 projects · ROI: 2,341 projects · Source files embedded directly</span>
+  <span>NI FDI Landscape Report · February 2026</span>
+</div>
+
+<script>
+// ════════════════════════════════════════════════════════════════════
+// CHART DATA — search each "EDIT FIG" section to change chart values
+// ════════════════════════════════════════════════════════════════════
+
+function gridAndAxes(W, H, PAD, maxVal, yLabel, tickCount, yFmt) {
+  let s = '';
+  s += `<text x="${PAD.l-38}" y="${PAD.t+(H-PAD.t-PAD.b)/2}" text-anchor="middle" font-family="Arial" font-size="9" fill="#aaa" transform="rotate(-90,${PAD.l-38},${PAD.t+(H-PAD.t-PAD.b)/2})">${yLabel}</text>`;
+  const cH = H-PAD.t-PAD.b;
+  for(let i=0;i<=tickCount;i++){
+    const y=PAD.t+cH*(1-i/tickCount), val=maxVal*i/tickCount;
+    s+=`<line x1="${PAD.l}" y1="${y}" x2="${W-PAD.r}" y2="${y}" stroke="#e0dbd0" stroke-width="1"/>`;
+    s+=`<text x="${PAD.l-6}" y="${y+4}" text-anchor="end" font-family="Arial" font-size="9" fill="#999">${yFmt(val)}</text>`;
+  }
+  s+=`<line x1="${PAD.l}" y1="${PAD.t}" x2="${PAD.l}" y2="${H-PAD.b}" stroke="#ccc5b5" stroke-width="1"/>`;
+  s+=`<line x1="${PAD.l}" y1="${H-PAD.b}" x2="${W-PAD.r}" y2="${H-PAD.b}" stroke="#ccc5b5" stroke-width="1"/>`;
+  return s;
+}
+
+// ────────────────────────────────────────────────────────────────────
+// EDIT FIG1 — Annual project counts
+// Change the numbers inside niP[] and roiP[] arrays.
+// Each position = one year: [2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025]
+// roiDiv controls how much the ROI bars are shrunk visually (default 6)
+// ────────────────────────────────────────────────────────────────────
+(function(){
+  const years  = ['2016','2017','2018','2019','2020','2021','2022','2023','2024','2025']; // EDIT: year labels
+  const niP    = [47, 28, 37, 34, 37, 40, 37, 26, 30, 37];   // REAL DATA: NI 2016–2025
+  const roiP   = [186,207,230,215,214,258,290,214,202,191];   // REAL DATA: ROI 2016–2025
+  const roiDiv = 6; // EDIT FIG1: visual scale divisor for ROI bars (keeps both on same chart)
+
+  const roiVis=roiP.map(v=>v/roiDiv);
+  const W=900,H=210,PAD={t:24,r:120,b:44,l:64};
+  const cW=W-PAD.l-PAD.r, cH=H-PAD.t-PAD.b;
+  const maxV=Math.max(...niP,...roiVis);
+  const grpW=cW/years.length, bW=(grpW-8)/2;
+  let s=gridAndAxes(W,H,PAD,maxV,'NI Projects',4,v=>Math.round(v));
+  for(let i=0;i<=4;i++){
+    const y=PAD.t+cH*(1-i/4), val=Math.round(maxV*i/4*roiDiv);
+    s+=`<text x="${W-PAD.r+6}" y="${y+4}" text-anchor="start" font-family="Arial" font-size="9" fill="#1a6b72">${val}</text>`;
+  }
+  s+=`<text x="${W-PAD.r+6}" y="${PAD.t-8}" text-anchor="start" font-family="Arial" font-size="9" fill="#1a6b72">ROI Projects</text>`;
+  years.forEach((yr,i)=>{
+    const gx=PAD.l+i*grpW+4;
+    const nh=(niP[i]/maxV)*cH, ny=PAD.t+cH-nh;
+    const nFill=niP[i]===Math.max(...niP)||niP[i]===Math.min(...niP)?'#c0392b':'#0f1923';
+    s+=`<rect class="bar-anim" x="${gx}" y="${H-PAD.b}" width="${bW}" height="0" fill="${nFill}" data-y="${ny}" data-h="${nh}" rx="1"/>`;
+    const rh=(roiVis[i]/maxV)*cH, ry=PAD.t+cH-rh;
+    s+=`<rect class="bar-anim" x="${gx+bW+2}" y="${H-PAD.b}" width="${bW}" height="0" fill="#1a6b72" opacity="0.7" data-y="${ry}" data-h="${rh}" rx="1"/>`;
+    s+=`<text x="${gx+bW+1}" y="${H-PAD.b+14}" text-anchor="middle" font-family="Arial" font-size="10" fill="#666">${yr}</text>`;
+    if(niP[i]===Math.max(...niP)||niP[i]===Math.min(...niP)||yr==='2025')
+      s+=`<text x="${gx+bW/2}" y="${ny-5}" text-anchor="middle" font-family="Georgia" font-size="12" fill="${nFill}">${niP[i]}</text>`;
+    if(roiP[i]===Math.max(...roiP)||yr==='2025')
+      s+=`<text x="${gx+bW+2+bW/2}" y="${ry-5}" text-anchor="middle" font-family="Georgia" font-size="11" fill="#1a6b72">${roiP[i]}</text>`;
+  });
+  s+=`<text x="${PAD.l+cW/2}" y="${H}" text-anchor="middle" font-family="Arial" font-size="9" fill="#aaa">Year</text>`;
+  document.getElementById('fig1').innerHTML=s;
+})();
+
+// ────────────────────────────────────────────────────────────────────
+// EDIT FIG2 — NI capital investment per year in USD $m
+// Change the numbers inside vals[]
+// Years: [2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025]
+// ────────────────────────────────────────────────────────────────────
+(function(){
+  const years=['2016','2017','2018','2019','2020','2021','2022','2023','2024','2025'];
+  const vals=[1822,914,434,956,402,1462,1962,510,464,1197]; // REAL DATA: NI capital $m 2016–2025
+  const maxY=2200; // top of y-axis
+  const W=420,H=200,PAD={t:20,r:16,b:44,l:68};
+  const cW=W-PAD.l-PAD.r, cH=H-PAD.t-PAD.b;
+  const bW=cW/years.length-4;
+  let s=gridAndAxes(W,H,PAD,maxY,'USD $m',4,v=>'$'+Math.round(v)+'m');
+  s+=`<text x="${PAD.l+cW/2}" y="${H}" text-anchor="middle" font-family="Arial" font-size="9" fill="#aaa">Year</text>`;
+  vals.forEach((v,i)=>{
+    const x=PAD.l+i*(cW/years.length)+2, h=(v/maxY)*cH, y=PAD.t+cH-h;
+    const fill=v===Math.max(...vals)?'#c0392b':v===Math.min(...vals)?'#1a6b72':'#0f1923';
+    s+=`<rect class="bar-anim" x="${x}" y="${H-PAD.b}" width="${bW}" height="0" fill="${fill}" data-y="${y}" data-h="${h}" rx="1"/>`;
+    s+=`<text x="${x+bW/2}" y="${H-PAD.b+13}" text-anchor="middle" font-family="Arial" font-size="9" fill="#666">${years[i]}</text>`;
+    if(v===Math.max(...vals)||v===Math.min(...vals)||years[i]==='2025')
+      s+=`<text x="${x+bW/2}" y="${y-5}" text-anchor="middle" font-family="Georgia" font-size="11" fill="${fill}">$${v}m</text>`;
+  });
+  document.getElementById('fig2').innerHTML=s;
+})();
+
+// ────────────────────────────────────────────────────────────────────
+// EDIT FIG3 — NI jobs created per year
+// Change the numbers inside vals[]
+// Years: [2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025]
+// ────────────────────────────────────────────────────────────────────
+(function(){
+  const years=['2016','2017','2018','2019','2020','2021','2022','2023','2024','2025'];
+  const vals=[2111,1411,1927,1482,1632,3689,2341,1396,1866,3875]; // REAL DATA: NI jobs 2016–2025
+  const maxY=4200; // top of y-axis
+  const W=420,H=200,PAD={t:20,r:16,b:44,l:68};
+  const cW=W-PAD.l-PAD.r, cH=H-PAD.t-PAD.b;
+  const bW=cW/years.length-4;
+  let s=gridAndAxes(W,H,PAD,maxY,'Jobs Created',4,v=>Math.round(v).toLocaleString());
+  s+=`<text x="${PAD.l+cW/2}" y="${H}" text-anchor="middle" font-family="Arial" font-size="9" fill="#aaa">Year</text>`;
+  vals.forEach((v,i)=>{
+    const x=PAD.l+i*(cW/years.length)+2, h=(v/maxY)*cH, y=PAD.t+cH-h;
+    const fill=v===Math.max(...vals)?'#c0392b':v===Math.min(...vals)?'#1a6b72':'#0f1923';
+    s+=`<rect class="bar-anim" x="${x}" y="${H-PAD.b}" width="${bW}" height="0" fill="${fill}" data-y="${y}" data-h="${h}" rx="1"/>`;
+    s+=`<text x="${x+bW/2}" y="${H-PAD.b+13}" text-anchor="middle" font-family="Arial" font-size="9" fill="#666">${years[i]}</text>`;
+    if(v===Math.max(...vals)||v===Math.min(...vals)||years[i]==='2025')
+      s+=`<text x="${x+bW/2}" y="${y-5}" text-anchor="middle" font-family="Georgia" font-size="11" fill="${fill}">${v.toLocaleString()}</text>`;
+  });
+  document.getElementById('fig3').innerHTML=s;
+})();
+
+// ────────────────────────────────────────────────────────────────────
+// EDIT FIG4 — Sector breakdown percentages
+// Each row: name (label), ni (NI % share), roi (ROI % share)
+// maxV = highest % value across all sectors (set at least equal to largest ni/roi)
+// ────────────────────────────────────────────────────────────────────
+(function(){
+  const sectors=[
+    {name:'Software & IT Services',  ni:43.3, roi:27.3}, // REAL DATA: NI vs ROI 2016–2025
+    {name:'Business Services',        ni:13.9, roi:17.5}, // REAL DATA
+    {name:'Financial Services',       ni: 4.0, roi: 8.6}, // REAL DATA
+    {name:'Communications',           ni: 4.5, roi: 5.9}, // REAL DATA
+    {name:'Renewable Energy',         ni: 3.7, roi: 2.7}, // REAL DATA
+    {name:'Industrial Equipment',     ni: 4.5, roi: 2.9}, // REAL DATA
+    {name:'Pharma / MedTech',         ni: 1.4, roi: 6.5}, // REAL DATA (pharma 3.1 + medtech 3.4)
+  ];
+  const maxV=46; // slightly above 43.3
+  const el=document.getElementById('fig4');
+  el.innerHTML=`<div style="display:grid;grid-template-columns:160px 1fr 36px 1fr 36px;gap:4px;margin-bottom:6px;align-items:center;">
+    <span></span>
+    <span style="font-size:9px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);">NI %</span>
+    <span></span>
+    <span style="font-size:9px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);">ROI %</span>
+    <span></span>
+  </div>`;
+  sectors.forEach(d=>{
+    const nW=(d.ni/maxV*100).toFixed(1), rW=(d.roi/maxV*100).toFixed(1);
+    el.innerHTML+=`<div style="display:grid;grid-template-columns:160px 1fr 36px 1fr 36px;gap:4px;align-items:center;margin-bottom:9px;">
+      <span style="font-size:11px;font-weight:500;color:var(--ink);">${d.name}</span>
+      <div style="height:14px;background:var(--pale);overflow:hidden;"><div class="bar-fill" style="width:0%;height:100%;" data-target="${nW}%"></div></div>
+      <span style="font-size:10px;font-weight:600;color:var(--ink);text-align:right;">${d.ni}%</span>
+      <div style="height:14px;background:var(--pale);overflow:hidden;"><div class="bar-fill teal" style="width:0%;height:100%;opacity:0.8;" data-target="${rW}%"></div></div>
+      <span style="font-size:10px;font-weight:600;color:var(--teal);text-align:right;">${d.roi}%</span>
+    </div>`;
+  });
+  el.innerHTML+=`<p style="font-size:9px;color:#aaa;text-align:center;margin-top:4px;">% share of total FDI projects</p>`;
+})();
+
+// ────────────────────────────────────────────────────────────────────
+// EDIT FIG5 — Activity type percentages
+// Same format as FIG4: name, ni (NI %), roi (ROI %)
+// ────────────────────────────────────────────────────────────────────
+(function(){
+  const acts=[
+    {name:'Business Services',        ni:26.6, roi:26.4}, // REAL DATA: NI vs ROI 2016–2025
+    {name:'Research & Development',   ni:26.1, roi:13.0}, // REAL DATA
+    {name:'Sales, Mktg & Support',    ni:13.0, roi:19.0}, // REAL DATA
+    {name:'Manufacturing',            ni:11.9, roi: 8.6}, // REAL DATA
+    {name:'HQ Activity',              ni: 4.2, roi:13.2}, // REAL DATA
+    {name:'Logistics & Distribution', ni: 7.1, roi: 5.1}, // REAL DATA
+  ];
+  const maxV=30; // slightly above largest value
+  const el=document.getElementById('fig5');
+  el.innerHTML=`<div style="display:grid;grid-template-columns:180px 1fr 36px 1fr 36px;gap:4px;margin-bottom:6px;align-items:center;">
+    <span></span>
+    <span style="font-size:9px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);">NI %</span>
+    <span></span>
+    <span style="font-size:9px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);">ROI %</span>
+    <span></span>
+  </div>`;
+  acts.forEach(d=>{
+    const nW=(d.ni/maxV*100).toFixed(1), rW=(d.roi/maxV*100).toFixed(1);
+    el.innerHTML+=`<div style="display:grid;grid-template-columns:180px 1fr 36px 1fr 36px;gap:4px;align-items:center;margin-bottom:9px;">
+      <span style="font-size:11px;font-weight:500;color:var(--ink);">${d.name}</span>
+      <div style="height:14px;background:var(--pale);overflow:hidden;"><div class="bar-fill" style="width:0%;height:100%;" data-target="${nW}%"></div></div>
+      <span style="font-size:10px;font-weight:600;color:var(--ink);text-align:right;">${d.ni}%</span>
+      <div style="height:14px;background:var(--pale);overflow:hidden;"><div class="bar-fill teal" style="width:0%;height:100%;opacity:0.8;" data-target="${rW}%"></div></div>
+      <span style="font-size:10px;font-weight:600;color:var(--teal);text-align:right;">${d.roi}%</span>
+    </div>`;
+  });
+  el.innerHTML+=`<p style="font-size:9px;color:#aaa;text-align:center;margin-top:4px;">% share of total FDI projects</p>`;
+})();
+
+// ────────────────────────────────────────────────────────────────────
+// EDIT FIG6 — Paired pie charts: New / Expansion / Co-Location
+//
+// niCounts[]  = NI absolute project counts  [New, Expansion, Co-Location]
+// roiCounts[] = ROI absolute project counts [New, Expansion, Co-Location]
+// The percentages are calculated automatically from the counts.
+// Slice colours are set in the sliceColors array below.
+// ────────────────────────────────────────────────────────────────────
+(function(){
+  const labels     = ['New Projects', 'Expansion', 'Co-Location'];
+  const niCounts   = [196, 151,   6];  // REAL DATA: NI [New, Expansion, Co-Location]
+  const roiCounts  = [1317, 837, 53];  // REAL DATA: ROI 2016–2025 [New, Expansion, Co-Location]
+
+  // EDIT FIG6: slice fill colours [New, Expansion, Co-Location]
+  // Both pies use the same colours so the legend applies to both
+  const niColors  = ['#0f1923', '#c0392b', '#ccc5b5'];
+  const roiColors = ['#0f1923', '#c0392b', '#ccc5b5'];
+
+  const W=420, H=230;
+  let s = '';
+
+  // ── helper: build one pie SVG group ──────────────────────────────
+  function drawPie(cx, cy, r, counts, colors, title, titleColor) {
+    const total = counts.reduce((a,b)=>a+b, 0);
+    let angle = -Math.PI / 2; // start at top
+
+    // title
+    s += `<text x="${cx}" y="${cy - r - 18}" text-anchor="middle" font-family="Arial" font-size="10" font-weight="600" fill="${titleColor}" letter-spacing="0.1em">${title}</text>`;
+    s += `<text x="${cx}" y="${cy - r - 6}" text-anchor="middle" font-family="Georgia" font-size="13" fill="${titleColor}">${total.toLocaleString()} projects</text>`;
+
+    counts.forEach((count, i) => {
+      const pct    = count / total;
+      const sweep  = pct * 2 * Math.PI;
+      const midA   = angle + sweep / 2; // angle at slice midpoint for label
+      const large  = sweep > Math.PI ? 1 : 0;
+
+      const x1 = cx + r * Math.cos(angle);
+      const y1 = cy + r * Math.sin(angle);
+      const x2 = cx + r * Math.cos(angle + sweep);
+      const y2 = cy + r * Math.sin(angle + sweep);
+
+      // slice path
+      s += `<path d="M${cx},${cy} L${x1},${y1} A${r},${r} 0 ${large},1 ${x2},${y2} Z" fill="${colors[i]}" stroke="#f5f0e8" stroke-width="1.5"/>`;
+
+      // label: only draw if slice is big enough to label (>4%)
+      if (pct > 0.04) {
+        // position label outside the pie for clarity
+        const labelR = r + 18;
+        const lx = cx + labelR * Math.cos(midA);
+        const ly = cy + labelR * Math.sin(midA);
+
+        // leader line from pie edge to label anchor
+        const innerR = r + 4;
+        const ix = cx + innerR * Math.cos(midA);
+        const iy = cy + innerR * Math.sin(midA);
+        s += `<line x1="${ix}" y1="${iy}" x2="${lx}" y2="${ly}" stroke="${colors[i]}" stroke-width="1" opacity="0.6"/>`;
+
+        // count on first line, pct on second
+        const anchor = lx > cx ? 'start' : 'end';
+        s += `<text x="${lx + (lx>cx?3:-3)}" y="${ly - 4}" text-anchor="${anchor}" font-family="Georgia" font-size="11" fill="${colors[i]}">${count.toLocaleString()}</text>`;
+        s += `<text x="${lx + (lx>cx?3:-3)}" y="${ly + 8}" text-anchor="${anchor}" font-family="Arial" font-size="9" fill="${colors[i]}">${(pct*100).toFixed(1)}%</text>`;
+      }
+
+      angle += sweep;
+    });
+  }
+
+  // ── draw both pies ────────────────────────────────────────────────
+  const r  = 58;
+  const cy = 128;
+  drawPie(110, cy, r, niCounts,  niColors,  'NORTHERN IRELAND',   '#0f1923');
+  drawPie(310, cy, r, roiCounts, roiColors, 'REPUBLIC OF IRELAND', '#1a6b72');
+
+  // ── shared legend at the bottom ───────────────────────────────────
+  const legY = H - 4;
+  const legItems = [
+    {label:'New Projects', color:'#0f1923'},
+    {label:'Expansion',    color:'#c0392b'},
+    {label:'Co-Location',  color:'#ccc5b5'},
+  ];
+  const legXStart = 30;
+  legItems.forEach((item, i) => {
+    const lx = legXStart + i * 130;
+    s += `<rect x="${lx}" y="${legY-9}" width="9" height="9" fill="${item.color}" rx="1"/>`;
+    s += `<text x="${lx+13}" y="${legY}" font-family="Arial" font-size="9" fill="#555">${item.label}</text>`;
+  });
+
+  document.getElementById('fig6').innerHTML = s;
+})();
+
+// ── ANIMATE ────────────────────────────────────────────────────────
+function animateAll(){
+  document.querySelectorAll('.bar-anim').forEach(r=>{
+    r.style.transition='all 1.2s cubic-bezier(.16,1,.3,1)';
+    r.setAttribute('y',r.getAttribute('data-y'));
+    r.setAttribute('height',r.getAttribute('data-h'));
+  });
+  document.querySelectorAll('[data-target]').forEach(el=>{
+    setTimeout(()=>{ el.style.width=el.getAttribute('data-target'); },150);
+  });
+}
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)animateAll();}),{threshold:0.1});
+obs.observe(document.querySelector('.stats-strip'));
+</script>
+</body>
+</html>
